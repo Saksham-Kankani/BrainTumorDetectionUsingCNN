@@ -38,14 +38,4 @@ Both of the new images were Glioma tumors and were predicted correctly.
 ![alt text](/images/predicted_two.png "Predicted Image Two")
 
 
-## How to use?
-Use the following:
-
-```git clone https://github.com/Aeryes/BrainTumorClassification.git```
-
-Run ```pip install -r requirements.txt```
-
-Place your new images in the data/New folder.
-
-Run ```python predict.py```
 

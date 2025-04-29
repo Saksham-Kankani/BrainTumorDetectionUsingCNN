@@ -3,7 +3,7 @@ I attempt to solve the problem found here --> https://www.kaggle.com/datasets/pr
 
 ## Introduction:
 This repo contains the code required to train a ResNet50 pretrained model to identify brain tumors based on the Kaggle dataset above.
-The model was trained to 98.77% accuracy.
+The model was trained to 96.77% accuracy.
 
 ## Method
 I attempted to use the legacy Xception model from the timm package at first, but it was not providing me with the results that I wanted to see. I swapped

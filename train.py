@@ -1,6 +1,6 @@
 from utils import load_data
 from sklearn.utils.class_weight import compute_class_weight
-from models import save_model, TransferLearningResNet
+from models import save_model, ResNet50Model
 import torch
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
@@ -32,7 +32,7 @@ class EarlyStopping:
 
 
 def train(args):
-    model = TransferLearningResNet(num_classes=4, dropout_rate_1=0.5, dropout_rate_2=0.5)
+    model = ResNet50Model(num_classes=4, dropout_rate_1=0.5, dropout_rate_2=0.5)
     model.to(device)
 
     # Define transforms for data augmentation and normalization

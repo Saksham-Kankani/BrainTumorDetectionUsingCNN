@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 from PIL import Image
-from models import TransferLearningResNet  # Import your model architecture here
+from models import ResNet50Model  # Import your model architecture here
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
@@ -126,7 +126,7 @@ def main():
     valid_loader = DataLoader(valid_dataset, batch_size=32, shuffle=False)
 
     # Create the model architecture and load the state dict
-    model = TransferLearningResNet(num_classes=4)  # Use the correct architecture that was used during training
+    model = ResNet50Model(num_classes=4)  # Use the correct architecture that was used during training
     model.load_state_dict(torch.load("resnet_model.pth"))  # Load the state dict (weights)
     model.to(device)  # Move model to GPU if available
 

@@ -4,7 +4,7 @@ from torchvision import transforms
 from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
-from models import TransferLearningResNet  # Replace with the correct model architecture
+from models import ResNet50Model  # Replace with the correct model architecture
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
@@ -13,7 +13,7 @@ print(f"Using device: {device}")
 class_names = ['glioma_tumor', 'meningioma_tumor', 'no_tumor', 'pituitary_tumor']
 
 # Define image transformations (should match the ones used during training)
-image_transforms = transforms.Compose([
+image_transformation = transforms.Compose([
     transforms.Resize((224, 224)),  # Ensure this matches your model's input size
     transforms.ToTensor(),
     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
@@ -22,7 +22,7 @@ image_transforms = transforms.Compose([
 
 # Function to load the model
 def load_model(model_path):
-    model = TransferLearningResNet(num_classes=len(class_names))  # Adjust architecture as needed
+    model = ResNet50Model(num_classes=len(class_names))  # Adjust architecture as needed
     model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
     model.to(device)
     model.eval()  # Set model to evaluation mode
@@ -32,7 +32,7 @@ def load_model(model_path):
 # Function to predict the class of a single image
 def predict_image(model, image_path):
     image = Image.open(image_path).convert('RGB')  # Load the image and convert to RGB
-    image = image_transforms(image)  # Apply the same transforms as training
+    image = image_transformation(image)  # Apply the same transforms as training
     image = image.unsqueeze(0)  # Add batch dimension
 
     image = image.to(device)  # Move image to device

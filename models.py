@@ -1,9 +1,9 @@
 from torch import nn
 from torchvision import models
 
-class TransferLearningResNet(nn.Module):
+class ResNet50Model(nn.Module):
     def __init__(self, num_classes=4, dropout_rate_1=0.3, dropout_rate_2=0.25):
-        super(TransferLearningResNet, self).__init__()
+        super(ResNet50Model, self).__init__()
         self.resnet = models.resnet50(pretrained=True)
 
         # Freeze all layers except the last block (layer4)
@@ -28,7 +28,7 @@ class TransferLearningResNet(nn.Module):
 
 # Model factory updated to include both CNN and transfer learning options
 model_factory = {
-    'resnet': TransferLearningResNet,
+    'resnet': ResNet50Model,
 }
 
 
